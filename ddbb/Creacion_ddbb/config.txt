@@ -1,0 +1,5 @@
+creacion usuario y privilegios
+p-voca-user
+ALejandra2019
+localhost
+database = prueba-vocacional

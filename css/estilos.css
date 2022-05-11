@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    /* declaracion de variables */
+    /*   declaracion de variable para un "margin-bottom" constante: */
+    --margen-bajo: 0.7rem;
+    /*   declaracion de variable para un "font-size" constante: */
+    --fuente-size: 16px;
+    --fsize-input-titulos: 1.2rem;
+    /* --back-color: rgb(130, 130, 130); */
+    --back-color: rgb(0, 140, 186);
+    /* color de la fuente por defecto para botones*/
+    --fcolor-items: white;
+    /* color de fondo para contrastes desvanecido */ 
+    --fon-color-alpha: rgba(0, 140, 186, 0.4);
+    /* color fondo inputs hover */
+    --color-white-alpha: rgba(255, 255, 255, 0.6);
+    /* color de advertencias bordes, */
+    /* --warning-color: rgb(245, 229, 6); */
+    --warning-color: rgb(255, 255, 0);
+    /* color de fondo para las preguntas seleccionadas */
+    --cSeleccion-preguntas: rgba(255, 255, 0, 0.3);
+    /* color de errores */
+    --error-color: rgb(245, 130, 37); 
+    /* tamaño del redondeado de los bordes */
+    --borde-redondo: 0.3rem;
+
+    /* uso de la variable: "var(--fuente-size.input)" */
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--fuente-size);
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.imagen-fondo {
+    background-image: url("../imagenes/mujer_panorama_2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+}
+
+/* ***************************** */
+div#dimensiones {
+    display: block;
+    position: absolute;
+    top: 6rem;
+    left: 1rem;
+    border: 1px solid black;
+    color: black;
+    background-color: transparent;
+    z-index: 1;
+}
+
+ /* ******** HEADER ******** */
+header {
+    overflow: hidden;
+    background-color: var(--back-color);
+    color: white;
+}
+
+div a.logo {
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: bolder;
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem;
+    color: var(--fcolor-items);
+}
+
+icon {
+    font-size: 2rem;
+}
+
+.usuario {
+    display: inline-block;
+    font-weight: bold;
+    font-size: var(--fsize-input-titulos);
+    margin-right: var(--margen-bajo);
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+/* **** REDUCIR EL TAMAÑO DE FUENTE EN NOMBRES LARGOS > 20 CARACTERES ****  */
+.medio-nombre {
+    font-size: 0.8rem;
+}
+
+#cerrar_sesion {
+    display: inline-block;
+}
+/*  ********* VISTAS ******** */
+
+div.contenedor {
+    /* background-color: rgb(231, 178, 157); */
+    width: 90%;
+    margin: 0 auto;
+}
+
+.izquierda {
+    float: left;
+}
+
+.derecha {
+    float: right;
+}
+
+.centrar {
+    margin: auto;
+}
+
+.ancho {
+    width: 100%;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.8rem;
+    line-height: 3rem;
+    text-align: center;
+    background-color: var(--back-color);
+    color: white;
+}
+
+p {
+    padding: 0.3rem;
+}
+
+.titulo {
+    text-align: center;
+    padding: 0.5rem;
+    /* margin-bottom: var(--margen-bajo); */
+}
+
+h2, 
+h3,
+h4,
+h5,
+h6 {
+    text-align: left;
+    /* padding: 0.3rem; */
+}
+
+p.presentacion {
+    padding: 0.5rem;
+    /* background-color: var(--fon-color-alpha); */
+    border-bottom: 2px solid white;
+}
+
+/* *************************************** */
+
+.subseccion {
+    /* border: 2px solid var(--back-color); */
+    /* -webkit-border-radius: var(--borde-redondo); */
+    /* -moz-border-radius: var(--borde-redondo); */
+    /* border-radius: var(--borde-redondo); */
+    padding-left: 1rem;
+}
+
+.caja-pequenna {
+    max-width: 25rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+.caja-mediana {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+}
+
+.caja-grande {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+}
+
+.fondo {
+    padding: 0.5rem;
+    background-color: var(--fon-color-alpha);
+    -webkit-border-radius: var(--borde-redondo);
+    -moz-border-radius: var(--borde-redondo);
+    border-radius: var(--borde-redondo);
+}
+
+div.esconder {
+    display: none;
+}
+
+/* Seccion para los estilos de los botones */
+
+input[type="submit"],
+input[type="button"] {
+    display: block;
+    /* display: inline-block; */
+    border: 2px solid var(--back-color);
+    -webkit-border-radius: var(--borde-redondo);
+    -moz-border-radius: var(--borde-redondo);
+    border-radius: var(--borde-redondo);
+    padding: 0.5rem;
+/* ************ IMPORTANTE ************/
+    margin: 0 auto 0.5rem auto;
+/* ************ IMPORTANTE ************/
+    font-size: var(--fsize-input-titulos);
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--back-color);
+    transition: background-color 1s;
+}
+
+input[type="submit"]:hover, 
+input[type="button"]:hover {
+    background-color: var(--back-color);
+    color: var(--fcolor-items);
+}
+
+input[type="button"].boton-fondo,
+input[type="submit"].boton-fondo {
+    background-color: var(--fcolor-items);
+}
+
+input[type="button"].boton-fondo:hover,
+input[type="submit"].boton-fondo:hover {
+    background-color: var(--back-color);
+    color: var(--fcolor-items);
+    border-color: var(--fcolor-items);
+}
+
+/* ************ BUTTONS DESACTIVADOS ************ */
+input[type="button"].desactivado {
+    font-style: italic;
+    /* background-color: var(--cSeleccion-preguntas); */
+    background-color: rgb(204, 202, 202);
+    color: white;
+    cursor: not-allowed;
+}
+
+input[type="button"].desactivado:hover {
+    color: var(--back-color);
+}
+
+/* ************ ESTILOS PARA LOS TEXT BUTTONS ************ */
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form textarea {    
+    display: block;
+    /* display: inline-block; */
+    border: 2px solid var(--back-color);
+    -webkit-border-radius: var(--borde-redondo);
+    -moz-border-radius: var(--borde-redondo);
+    border-radius: var(--borde-redondo);
+    padding: 0.5rem;
+    margin: 0 auto 0.5rem auto;
+    font-size: var(--fsize-input-titulos);
+    background-color: var(--color-white-alpha);
+    /* var(--fcolor-items); */
+    color: var(--back-color);
+    transition: background-color 1s;
+} 
+
+form input[type="text"]:hover,
+form input[type="text"]:focus,
+form input[type="email"]:hover,
+form input[type="email"]:focus,
+form input[type="password"]:hover,
+form input[type="password"]:focus,
+form input[type="date"]:hover,
+form input[type="date"]:focus,
+form textarea:hover,    
+form textarea:focus {    
+    background-color: var(--fcolor-items);
+    border: 2px solid var(--warning-color);
+}
+
+/* ************* ERRORES EN CAMPOS DE TEXTO ****************** */
+form  input[type='text'].error,
+form  input[type='password'].error,
+form  input[type='email'].error,
+form  input[type='date'].error {
+    border: 2px solid var(--error-color);
+    background-color: var(--fcolor-items);
+    color: rgb(245, 130, 37);
+}
+
+/* ************* ERRORES ****************** */
+.icono-error {
+    padding: 0.5rem;
+    font-size: 5rem;
+    color: var(--error-color);
+    display: block;
+    text-align: center;
+}
+
+.errores {
+    padding: 0.5rem;
+    /* margin: 0 auto var(--margen-bajo) auto; */
+    color: var(--fcolor-items);
+    background-color: var(--error-color);
+    border-radius: var(--borde-redondo);
+    margin-bottom: var(--margen-bajo);
+}
+
+/* ************* PAGINA DEL EXAMEN - LA PRUEBA ****************** */
+div.cuadroInstrucciones {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 0.5rem;
+    background-color: var(--back-color);
+    color: var(--fcolor-items);
+}
+
+div ol li {
+    margin-left: 1rem;
+}
+
+div ol li:hover {
+    font-size: 1.5rem;
+}
+
+/* **** estilos para las preguntas y respuestas **** */
+
+div.bloque {
+    display: block;
+    padding: 0.3rem;
+    margin-bottom: var(--margen-bajo);
+    border: 2px solid transparent;
+    -webkit-border-radius: var(--borde-redondo);
+    -moz-border-radius: var(--borde-redondo);
+    border-radius: var(--borde-redondo);
+}
+
+/* Tener en cuenta que los colores aplicados aqui con CSS seran cambiados 
+    mas adelante en el script de JS al dar clik en los iconos, en el 
+    encabezado del script encontrara las constantes usadas para los colores */
+/* Ejemplo: "js/script.js" => const preguntaFondo = */
+
+div.bloque:hover {
+    background-color: var(--fon-color-alpha);
+}
+
+p.pregunta {
+    max-width: 70%;
+}
+
+p.respuesta {
+    min-width: 6.5rem;
+}
+
+div.seleccion-respuesta {
+    color: black;
+    font-style: italic;
+    background-color: var(--cSeleccion-preguntas); 
+}
+
+div.preg-sin-seleccion {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+div ul {
+    margin: 0.5rem;
+}
+
+div ul li {
+    margin-bottom: 0.3rem;
+}
+
+/* ***** Pagina de Resultados ***** */
+div.grafico-sencillo-general {
+    display: block;
+    margin: auto;
+    height: 400px;
+} 
+
+
+div.resul-categorias {
+    font-size: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* center; */
+    margin-bottom: var(--margen-bajo);
+}
+
+.cursor {
+    cursor: pointer;
+} 
+
+.borde {
+    border: 1px solid gray;
+}
