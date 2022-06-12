@@ -7,14 +7,12 @@
     regLog(__FILE__, __LINE__,"Estamos en 'Admin/Usuario.php'"); 
 
     if (!isset($_SESSION['usuarioId'])) {
-        // header('Location: ' . RUTA . 'index.php');
-        header('Location: ' . 'index.php');
+        header('Location: ' . RUTA . 'index.php');
     } else {
         if ($_SESSION['tipoUsuario'] != PSICOLOGO) {
-            // header('Location: ' . RUTA . 'cerrar.php');
-            header('Location: ' . 'cerrar.php');
+            header('Location: ' . RUTA . 'cerrar.php');
         } else {
-            require_once '../funciones.php';
+            require_once __DIR__ . '/../funciones.php';
         }
     } 
 
@@ -49,7 +47,7 @@
         if($pruebaIntereses['Num_preg'] <= 0 ) {
             $datosPersonales['Intereses']['Prueba'] = false;
             $datosPersonales['Intereses']['fecha'] = "Prueba NO realizada!";
-            $errorIntereses = "errores";
+            $errorIntereses = "error";
         } 
         else  {
             $datosPersonales['Intereses']['Prueba'] = true;
@@ -63,7 +61,7 @@
         if($pruebaAptitudes['Num_preg'] <= 0 ) {
             $datosPersonales['Aptitudes']['Prueba'] = false;
             $datosPersonales['Aptitudes']['fecha'] = "Prueba NO realizada!";
-            $errorAptitudes = "errores";
+            $errorAptitudes = "error";
         }
         else {
             $datosPersonales['Aptitudes']['Prueba'] = true;
@@ -153,8 +151,8 @@
         }
 
         // require_once 'usuario.view.php';
-        // header('Location: ' . RUTA . 'admin/usuario.php?id=' . $id );
-        header('Location: ' . 'admin/usuario.php?id=' . $id );
+        header('Location: ' . RUTA . 'admin/usuario.php?id=' . $id );
+        // header('Location: ' . 'admin/usuario.php?id=' . $id );
     }
 
     ?>

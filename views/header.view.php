@@ -11,6 +11,7 @@
   <!-- Iconos Font Awesome 5+ -->
   <script src="https://kit.fontawesome.com/b0d3e7dfc1.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" href="<?php echo RUTA; ?>css/estilos.css">
+  <link rel="stylesheet" href="<?php echo RUTA; ?>css/estilos_admin_busquedas.css">
   <script src="<?php echo RUTA; ?>js/validaciones.js" language="Javascript"></script>
   <script src="<?php echo RUTA; ?>js/script.js" language="Javascript"></script>
   <title>Prueba Vocacional</title>

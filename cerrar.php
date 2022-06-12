@@ -9,7 +9,7 @@ $_SESSION = array();
 
 regLog(__FILE__, __LINE__, "Cerrando sesion.");
 
-header('Location: ' . 'index.php');
+header('Location: ' . RUTA . 'index.php');
 die();
 
 ?>

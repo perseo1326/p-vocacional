@@ -125,20 +125,19 @@
     // funcion para obtener las preguntas, las categorias y los valores, 
     // conociendo el area y el usuario
     function obtener_preguntas_desc_cat($conexion, $areaId, $usuarioId) {
-        $statement = $conexion->prepare(" 
-            SELECT preg_id AS pregId, 
-            cat_categoria AS categoria, 
-            preg_pregunta AS pregunta, 
-            resul_valor AS valor,
-            '-' AS texto 
-            FROM preguntas 
-            JOIN categorias 
-            ON cat_id = preg_categ_id 
-            JOIN resultados 
-            ON resul_pregunta_id = preg_id 
-            WHERE preg_area = :areaId 
-            AND resul_usuario_id = :usuarioId
-            AND preg_status = :status_activo ");
+        $statement = $conexion->prepare(" SELECT preg_id AS pregId, 
+                    cat_categoria AS categoria, 
+                    preg_pregunta AS pregunta, 
+                    resul_valor AS valor,
+                    '-' AS texto 
+                FROM preguntas 
+                JOIN categorias 
+                ON cat_id = preg_categ_id 
+                JOIN resultados 
+                ON resul_pregunta_id = preg_id 
+                WHERE preg_area = :areaId 
+                AND resul_usuario_id = :usuarioId
+                AND preg_status = :status_activo ");
         $statement->execute(array(':areaId' => $areaId, ':usuarioId' => $usuarioId, ':status_activo' => ACTIVO));
         $resultados = $statement->fetchAll();
         $statement = null;

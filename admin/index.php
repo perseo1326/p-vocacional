@@ -3,11 +3,11 @@
     require_once __DIR__ . '/config.php';
 
     if (!isset($_SESSION['usuarioId'])) {
-        header('Location: ' . 'index.php');
+        header('Location: ' . RUTA . 'index.php');
     } 
     else {
         if ($_SESSION['tipoUsuario'] != PSICOLOGO) {
-            header('Location: ' . 'cerrar.php');
+            header('Location: ' . RUTA . 'cerrar.php');
         }
     }
 
@@ -19,7 +19,6 @@
     $mensaje = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // require_once '../funciones.php';
 
         regLog(__FILE__, __LINE__, "Iniciando procesamiento POST para 'Config/Index'");
 
@@ -42,24 +41,24 @@
 
         // busqueda sin nombre, apellido1 u apellido2, ni fechas
         if ($nombreApellido && $tipoFecha == 'noFecha') {
-            $claseError = "caja-mediana error";
+            $claseError = "caja-mediana errores";
             $mensaje .= "No hay datos para realizar una búsqueda<br />";
         }
 
         // Busqueda por Nacimiento o examen con fechas invalidas
         if ($tipoFecha != 'noFecha' && (!$fechaDesde || !$fechaHasta)) {
-            $claseError = "caja-mediana error";
+            $claseError = "caja-mediana errores";
             $mensaje .= "Las fechas son inválidas<br />"; 
         } 
         else {
             // Busqueda por fecha de nacimiento o Examen con fechas en rango inverso
             if ($tipoFecha != 'noFecha' && !validarRangoFechas($fechaDesde, $fechaHasta)) {
-                $claseError = "caja-mediana error";
+                $claseError = "caja-mediana errores";
                 $mensaje .= "El rango de las fechas no es válido<br />";
             } 
             else {
                 if (calcularDiferenciaYears($fechaDesde, $fechaHasta) > 100) {
-                    $claseError = "caja-mediana error";
+                    $claseError = "caja-mediana errores";
                     $mensaje .= "El Rango de fechas NO puede ser  mayor a 100 años<br />";
                 }
             }

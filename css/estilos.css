@@ -13,6 +13,7 @@
     /*   declaracion de variable para un "font-size" constante: */
     --fuente-size: 16px;
     --fsize-input-titulos: 1.2rem;
+    --body-background-color: white;
     /* --back-color: rgb(130, 130, 130); */
     --back-color: rgb(0, 140, 186);
     /* color de la fuente por defecto para botones*/
@@ -27,7 +28,7 @@
     /* color de fondo para las preguntas seleccionadas */
     --cSeleccion-preguntas: rgba(255, 255, 0, 0.3);
     /* color de errores */
-    --error-color: rgb(245, 130, 37); 
+    --error-color: rgb(219, 124, 124); 
     /* tamaño del redondeado de los bordes */
     --borde-redondo: 0.3rem;
 
@@ -41,6 +42,10 @@ body {
     font-size: var(--fuente-size);
 }
 
+.body-color {
+    background-color: var(--body-background-color);
+}
+
 .clearfix::after {
     content: "";
     clear: both;
@@ -52,6 +57,11 @@ div.imagen-fondo {
     background-repeat: no-repeat;
     background-size: cover;
     width: auto;
+}
+
+.resaltar-fondo 
+{
+    background-color: var(--fon-color-alpha);
 }
 
 /* ***************************** */
@@ -112,6 +122,17 @@ div.contenedor {
     margin: 0 auto;
 }
 
+.bloque-linea
+{
+    display: inline-block;
+}
+
+.contenedor-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .izquierda {
     float: left;
 }
@@ -128,10 +149,23 @@ div.contenedor {
     width: 100%;
 }
 
+.ancho-25 {
+    width: 25%;
+}
+
+.ancho-50 {
+    width: 50%;
+}
+
+.margen-bajo {
+    margin-bottom: var(--margen-bajo);
+}
+
 footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
+    /* position: relative; */
+    /* position: fixed; */
+    /* left: 0; */
+    /* bottom: 0; */
     width: 100%;
     font-size: 0.8rem;
     line-height: 3rem;
@@ -147,7 +181,6 @@ p {
 .titulo {
     text-align: center;
     padding: 0.5rem;
-    /* margin-bottom: var(--margen-bajo); */
 }
 
 h2, 
@@ -156,7 +189,6 @@ h4,
 h5,
 h6 {
     text-align: left;
-    /* padding: 0.3rem; */
 }
 
 p.presentacion {
@@ -167,12 +199,13 @@ p.presentacion {
 
 /* *************************************** */
 
-.subseccion {
-    /* border: 2px solid var(--back-color); */
-    /* -webkit-border-radius: var(--borde-redondo); */
-    /* -moz-border-radius: var(--borde-redondo); */
-    /* border-radius: var(--borde-redondo); */
-    padding-left: 1rem;
+/* decoracion para el cuadro de explicacion en la "prueba.view" */
+div.caja {
+    /* margin-bottom: var(--margen-bajo); */
+    /* padding: 0.5rem; */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .caja-pequenna {
@@ -193,6 +226,7 @@ p.presentacion {
     padding: 0.5rem 0;
 }
 
+
 .fondo {
     padding: 0.5rem;
     background-color: var(--fon-color-alpha);
@@ -201,12 +235,14 @@ p.presentacion {
     border-radius: var(--borde-redondo);
 }
 
-div.esconder {
+.esconder {
     display: none;
 }
 
 /* Seccion para los estilos de los botones */
 
+.boton,
+button,
 input[type="submit"],
 input[type="button"] {
     display: block;
@@ -226,6 +262,8 @@ input[type="button"] {
     transition: background-color 1s;
 }
 
+.boton:hover,
+button:hover,
 input[type="submit"]:hover, 
 input[type="button"]:hover {
     background-color: var(--back-color);
@@ -245,9 +283,9 @@ input[type="submit"].boton-fondo:hover {
 }
 
 /* ************ BUTTONS DESACTIVADOS ************ */
+/*
 input[type="button"].desactivado {
     font-style: italic;
-    /* background-color: var(--cSeleccion-preguntas); */
     background-color: rgb(204, 202, 202);
     color: white;
     cursor: not-allowed;
@@ -300,10 +338,11 @@ form  input[type='email'].error,
 form  input[type='date'].error {
     border: 2px solid var(--error-color);
     background-color: var(--fcolor-items);
-    color: rgb(245, 130, 37);
+    color: var(--error-color); 
 }
 
-/* ************* ERRORES ****************** */
+/* ************* FIN ERRORES ****************** */
+
 .icono-error {
     padding: 0.5rem;
     font-size: 5rem;
@@ -326,18 +365,20 @@ div.cuadroInstrucciones {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: -10;
     padding: 0.5rem;
-    background-color: var(--back-color);
-    color: var(--fcolor-items);
+    background-color: var(--fon-color-alpha);
+    cursor: pointer;
+}
+
+div ol.instrucciones {
+    font-size: 1rem;
+    padding: 0rem 1rem;
 }
 
 div ol li {
     margin-left: 1rem;
-}
-
-div ol li:hover {
-    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
 }
 
 /* **** estilos para las preguntas y respuestas **** */
@@ -409,6 +450,20 @@ div.resul-categorias {
     cursor: pointer;
 } 
 
-.borde {
-    border: 1px solid gray;
+div.preguntas {
+    background-color: aquamarine;
+    position: relative;
+    display: block;
+    z-index: -1;
 }
+
+input.verde:hover
+{
+    background-color: green !important;
+}
+
+input.rojo:hover
+{
+    background-color: orangered !important;
+}
+
