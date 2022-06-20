@@ -112,9 +112,11 @@
 
     // ****************************************************************
     // funcion para obtener las preguntas conociendo el area = intereses o aptitudes
+    // TODO Modificar el LIMIT del query para las preguntas de la prueba
     function obtener_preguntas($conexion, $areaId) {
+                                        // -- WHERE preg_area = :area AND preg_status = :status_activo LIMIT 20 ");
         $statement = $conexion->prepare("SELECT preg_id, preg_categ_id, preg_pregunta FROM preguntas
-                                        WHERE preg_area = :area AND preg_status = :status_activo LIMIT 10 ");
+                                        WHERE preg_area = :area AND preg_status = :status_activo  ");
         $statement->execute(array(':area' => $areaId, ':status_activo' => ACTIVO));
         $resultados = $statement->fetchAll();
         $statement = null;

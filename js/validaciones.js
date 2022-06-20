@@ -14,6 +14,7 @@
 // ***************************************************************
 // funcion para validar el ID de usuario, NO vacio, ni menor a 8 caracteres
 function validarUserID(texto) {
+    texto = texto.trim();
     if (texto == "") {
         return "El usuario ID no puede ser vacio.<br />";
     } else if (texto.match(/[ ñ]/g) != null) {
@@ -27,6 +28,8 @@ function validarUserID(texto) {
 // ***************************************************************
 // funcion para verificar si las contraseñas son iguales
 function validarPasswords(pass1, pass2) {
+    pass1 = pass1.trim();
+    pass2 = pass2.trim();
     if (pass1 == "" || pass2 == "") {    
         return "Los campos de contraseñas no pueden estar vacios.<br />";
     }
@@ -48,8 +51,8 @@ function validarPasswords(pass1, pass2) {
 // funcion para detectar y evitar caracteres NO validos 
 // en el input (nombre, apellido1, apellido2)
 function validarNombre_Apellido(texto) {
-    let patron = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     texto = texto.trim();
+    let patron = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     if ( !patron.test(texto)) {
         return " tiene caracteres NO válidos.<br />";
     }
@@ -59,11 +62,11 @@ function validarNombre_Apellido(texto) {
 //******************************************************************* 
 // funcion para validar una direccion de email
 function validarEmail(texto) {
-    var expRegCorreo=/^\w+@(\w+\.)+\w{2,4}$/; 
     texto = texto.trim();
+    var expRegCorreo=/^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/; 
 
     if (texto == "") {
-        return false;
+        return "Debe ingresar un email válido";
     }
     if (!expRegCorreo.test(texto)) {
         return "El email no tiene un formato correcto.<br />";
@@ -101,27 +104,20 @@ function validarTelefono(texto) {
         minimoNum += 3;
     }
 
-    // // existe (-), sumar cada una de sus apariciones y aumentar 
-    // //  el numero minimo de caracteres numericos
-    // if (patron4.test(texto)) {
-    //   let a = texto.match(patron4);
-    //   minimoNum += a.length;
-    // }
-
     // Revisar si en la primera posicion hay un + o numeros
     if (patron1.test(pos1)) {
-        error += "\"Telefono\": primer caracter (" + pos1 + ") NO es válido.<br />";
+        error += 'El primer caracter (' + pos1 + ') NO es válido.<br />';
     } 
 
     // revisar si el resto de caracteres son validos
     let rest = texto.slice(1);
     if (patron2.test(rest)) {
-        error += "\"Telefono\": por favor unicamente numeros 0-9<br />";
+        error += "Unicamente numeros 0-9<br />";
     }
     
     // revisar si la cantidad de caracteres numericos es la minima para un telefono = "minimoNum"
     if (texto.length < minimoNum) {
-        error += "\"Telefono\": el número proporcionado parece ser no válido.<br />"
+        error += "El número parece ser no válido.<br />"
     }
 
     if (error == "") {
@@ -173,11 +169,6 @@ function validarFecha(fecha) {
 // funcion que compara una fecha dada con el tiempo actual y 
 // indica si la cantidad de años de "edadLimite" es mayor o menor 
 function compararMenorEdad(fecha, edadLimite) {
-    // Si la fecha es "falso o null" => return NULL
-    if (!fecha || fecha == null) {
-        console.log("fecha invalida, saliendo funcion ...");
-        return null;
-    }
 
   // variable para saber cuanto son "edadLimite" años en milisec
   edadLimite = 1000 * 60 * 60 * 24 * 365.25 * edadLimite;
@@ -194,3 +185,25 @@ function compararMenorEdad(fecha, edadLimite) {
 }
 
 // ***************************************************************
+function dentroRangoEdades(fecha, limInf) {
+    let estaDentroRango = false;
+    let fechaRango = new Date(fecha);
+    let ahora = new Date();
+    let menor = new Date(fechaRango);
+
+    menor.setFullYear((fechaRango.getFullYear() + limInf));
+
+    console.log("Menor: ", menor);
+
+    console.log("comparacion (menor < ahora): ", ((menor < ahora)));
+
+    // Es menor que el limite Inferior (limInf)?
+    if ( menor < ahora ) {
+        console.log("verdadero: la edad esta dentro del rango");
+        estaDentroRango = true;
+    } else {
+        console.log("falso: La edad no cumple con el rango");
+        estaDentroRango = false;
+    }
+    return estaDentroRango;
+}

@@ -4,8 +4,6 @@
     require_once __DIR__ . '/config.php';
     require __DIR__ . '/../session.php';
 
-    regLog(__FILE__, __LINE__,"Estamos en 'Admin/Usuario.php'"); 
-
     if (!isset($_SESSION['usuarioId'])) {
         header('Location: ' . RUTA . 'index.php');
     } else {
@@ -15,6 +13,8 @@
             require_once __DIR__ . '/../funciones.php';
         }
     } 
+
+    regLog(__FILE__, __LINE__,"Estamos en 'Admin/Usuario.php'"); 
 
     if($_SERVER['REQUEST_METHOD'] == 'GET') 
     {  
@@ -47,7 +47,7 @@
         if($pruebaIntereses['Num_preg'] <= 0 ) {
             $datosPersonales['Intereses']['Prueba'] = false;
             $datosPersonales['Intereses']['fecha'] = "Prueba NO realizada!";
-            $errorIntereses = "error";
+            $errorIntereses = "errores";
         } 
         else  {
             $datosPersonales['Intereses']['Prueba'] = true;
@@ -61,7 +61,7 @@
         if($pruebaAptitudes['Num_preg'] <= 0 ) {
             $datosPersonales['Aptitudes']['Prueba'] = false;
             $datosPersonales['Aptitudes']['fecha'] = "Prueba NO realizada!";
-            $errorAptitudes = "error";
+            $errorAptitudes = "errores";
         }
         else {
             $datosPersonales['Aptitudes']['Prueba'] = true;

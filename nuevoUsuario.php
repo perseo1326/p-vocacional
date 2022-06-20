@@ -5,7 +5,7 @@
     regLog(__FILE__, __LINE__, "Pagina Crear nuevo usuario.");
 
     if (isset($_SESSION['usuarioId'])) {
-        header('Location: ' . 'cerrar.php');
+        header('Location: ' . RUTA . 'cerrar.php');
         //error("nuevo usuario -> session activa");
     }
 
@@ -53,8 +53,10 @@
             else {
                 // saber si la fecha es menor de 16 años?
                 $x = calcularDiferenciaYears($nacimiento);
-                if($x < 16 && $x > 90) {
-                    $error .= "Debe ser mayor de 16 años y menor de 90 años<br />";
+                // if($x < EDAD_MIN && $x > EDAD_MAX) {
+                if($x < EDAD_MIN ) {
+                    // $error .= "Debe ser mayor de " . EDAD_MIN . " años y menor de " . EDAD_MAX . " años<br />";
+                    $error .= "Debe ser mayor de " . EDAD_MIN . " años.<br />";
                 }      
             }
             
@@ -78,8 +80,8 @@
             
         if ($error == "") {
             // Enmascarar o encriptar la contraseña usando el algoritmo "sha512" con el metodo "hash()"
-            // $password = hash('sha512', $password);
-            // $password2 = hash('sha512', $password2);
+            $password = hash('sha512', $password);
+            $password2 = hash('sha512', $password2);
 
             if ($password != $password2) {
                 error("Error Codificando la información");

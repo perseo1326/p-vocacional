@@ -32,10 +32,10 @@
             }
 
             // obtener el conjunto de datos para el area adecuada
-            $resultados = obtener_preguntas($conexion, $area->getTipo());
+            $preguntas = obtener_preguntas($conexion, $area->getTipo());
             // si no hay datos, hay ERROR!
             
-            if (empty($resultados)) {
+            if (empty($preguntas)) {
                 error("Error, no se obtuvieron las preguntas.");
             } 
         }
@@ -43,7 +43,6 @@
     } 
     else {
         //echo "No hay sesion, saliendo al index";
-        // header('Location: ' . RUTA . 'index.php');
         header('Location: ' . 'index.php');
     }
 

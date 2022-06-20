@@ -7,11 +7,11 @@
     
     ?>
 
-    <div id="area" class="contenedor">
+    <div id="contenido" class="contenedor">
         <h1 class="titulo">Resultados Pruebas</h1>
-        <div class="caja caja-mediana fondo">  
+        <div class="caja_ caja-mediana fondo_">  
             <h2>Datos Personales</h2>
-            <form class="formulario resul-categorias" id="formUsuario" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <form class="formulario resul-categorias" id="formUsuario" name="formUsuario" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <label for="nombre">Nombre: </label>
                 <input type="text" name="nombre" id="nombre" class="ancho desactivado" value="<?php echo $datosPersonales['nombre']; ?>" maxlength="98" readonly>
@@ -21,10 +21,10 @@
                 <input type="text" name="apellido2" id="apellido2" class="ancho desactivado" value="<?php echo $datosPersonales['apellido2']; ?>" maxlength="49" readonly>
 
                 <div>
-                    <button id="mostrarDetallesUsuario">Mostrar detalles <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    <button id="mostrarDetallesUsuario">Mostrar más detalles <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 </div>
 
-                <div id="datosPersonales" class="esconder resaltar-fondo">
+                <div id="datosPersonales" class="esconder resaltar-fondo_">
                     <label for="nacimiento">Fecha de Nacimiento: </label>
                     <input type="text" name="nacimiento" id="nacimiento" class="ancho desactivado" value="<?php echo $datosPersonales['nacimiento']; ?>" readonly>
                     <label for="telefono">Teléfono: </label>
@@ -34,28 +34,29 @@
                 </div>
 
                 <label for="intereses">Prueba de Intereses</label>
-                <input type="text" name="intereses" id="" class="ancho <?php echo $errorIntereses; ?>" value="<?php echo $datosPersonales['Intereses']['fecha']; ?>" readonly>
+                <input type="text" name="intereses" id="" class="ancho desactivado <?php echo $errorIntereses; ?>" value="<?php echo $datosPersonales['Intereses']['fecha']; ?>" readonly>
                 <label for="aptitudes">Prueba de Aptitudes</label>
-                <input type="text" name="aptitudes" id="" class="ancho <?php echo $errorAptitudes; ?>" value="<?php echo $datosPersonales['Aptitudes']['fecha']; ?>" readonly>
+                <input type="text" name="aptitudes" id="" class="ancho desactivado <?php echo $errorAptitudes; ?>" value="<?php echo $datosPersonales['Aptitudes']['fecha']; ?>" readonly>
 
                 <div>
-                    <input type="button" value="Notas" onclick="javascript:mostrarFormulario('notas', 'notas')">
-                    <!-- <input type="button" value="Notas" onclick="javascript:esconderPanel('notas')">  -->
+                    <input type="button" id="bNotas" value="Notas" >
                 </div>
                 
-                <textarea name="notas" class="ancho esconder" id="notas" cols="30" rows="7" placeholder="Notas..." readonly ><?php echo $datosPersonales['notas']; ?></textarea>
+                <textarea name="notas" class="ancho esconder desactivado" id="notas" cols="30" rows="7" placeholder="Notas..." readonly ><?php echo $datosPersonales['notas']; ?></textarea>
                 <p id="errorDatos" class=""></p>
 
                 <div class="contenedor-flex">
                     <div class="ancho-50">
-                        <input id="editarGuardarInfo" class="" type="button" value="Editar Información">
+                        <input id="editarGuardarInfo" class="" type="submit" value="Editar Información" data-edicion="false">
                     </div>
                     <div class="ancho-50 esconder" id="cancelarEdicion">
-                        <input id="cancelarEditarInfo" class="rojo" type="button" value="Cancelar">
+                        <input id="cancelarEditarInfo" class="rojo" type="reset" value="Cancelar Edición">
                     </div>
                 </div>
             </form>
+            <div class="" id="errorRegistro"></div>
         </div>
+
 
         <!-- Mostrar grafico general -->
         <div class="grafico-general" id="grafico-general">
@@ -124,7 +125,8 @@
         require_once __DIR__ . '/../views/footer.view.php';
 
     ?>
-    <script src="<?php echo RUTA; ?>js/busquedas.js"></script>
+    <script src="<?php echo RUTA; ?>js/script.js"></script>
+    <script src="<?php echo RUTA; ?>js/validaciones.js"></script>
     <script src="<?php echo RUTA; ?>js/adminUsuario.js"></script>
 
 

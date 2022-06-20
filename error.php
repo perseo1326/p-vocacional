@@ -16,7 +16,6 @@
             ?>
             <br />
             <input class="boton " type="button" value="Aceptar" onclick="location.href='<?php echo RUTA; ?>index.php'" >
-            <!-- <input class="boton " type="button" value="Regresar" onclick="javascript: window.history.back(); " > -->
         </article>
     </div>
 </div>

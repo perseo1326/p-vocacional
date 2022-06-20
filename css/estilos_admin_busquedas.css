@@ -1,42 +1,39 @@
 
-/* estilos para la pagina Admin/index.php */
+    /* estilos para la pagina Admin/index.php */
 
-.subseccion {
-    padding-left: 1rem;
-    position: relative;
-}
+    .subseccion {
+        padding-left: 1rem;
+        position: relative;
+    }
 
-div.contenedor-fecha {
-    position: relative;
-    /* z-index: -1; */
-    opacity: 0.2;
-    cursor: not-allowed;
-}
+    div.deshabilitar-fecha {
+        /* position: relative; */
+        opacity: 0.2;
+        cursor: not-allowed;
+    }
 
-.prueba {
-    background-color: lightblue;
-}
-
-
-
-
-
+    .prueba {
+        background-color: lightblue;
+    }
 
     input[type='date']:disabled {
         background-color: #dbdbdb; 
-        cursor: not-allowed;
+        /* cursor: not-allowed; */
     }
 
     input[type="button"].disabled {
         background: #a8a8a8;
-        cursor: not-allowed;
+        /* cursor: not-allowed; */
     }
 
-    .formulario input[type='text'].desactivado {
+    .formulario input[type='text'].desactivado, 
+    form textarea.desactivado {
         background-color: #dbdbdb; 
+        cursor: default;
     }
 
-    .formulario input[type='text'].desactivado:hover {
+    .formulario input[type='text'].desactivado:hover,
+    form textarea.desactivado:hover {
         border-color: #dbdbdb; 
     }
 

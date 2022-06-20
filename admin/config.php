@@ -13,6 +13,10 @@
     const ADMINISTRADOR = 'ADMINISTRADOR';
     //Tiempo en segundos para dar vida a la sesión.
     define('TIEMPOSESION', 3600); // 60min 
+    // define('TIEMPOSESION', ); // 60min 
+
+    // define los limites de edades 
+    const EDAD_MIN = 18;
 
     // configuracion para la conexion a la base de datos ddbb:
     // $db_config = ['host' => '192.168.0.100', 

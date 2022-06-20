@@ -9,7 +9,7 @@
 :root {
     /* declaracion de variables */
     /*   declaracion de variable para un "margin-bottom" constante: */
-    --margen-bajo: 0.7rem;
+    --margen-bajo: 1rem;
     /*   declaracion de variable para un "font-size" constante: */
     --fuente-size: 16px;
     --fsize-input-titulos: 1.2rem;
@@ -66,7 +66,7 @@ div.imagen-fondo {
 
 /* ***************************** */
 div#dimensiones {
-    display: block;
+    /* display: block; */
     position: absolute;
     top: 6rem;
     left: 1rem;
@@ -162,10 +162,6 @@ div.contenedor {
 }
 
 footer {
-    /* position: relative; */
-    /* position: fixed; */
-    /* left: 0; */
-    /* bottom: 0; */
     width: 100%;
     font-size: 0.8rem;
     line-height: 3rem;
@@ -189,6 +185,10 @@ h4,
 h5,
 h6 {
     text-align: left;
+}
+
+.texto-centro {
+    text-align: center;
 }
 
 p.presentacion {
@@ -244,6 +244,7 @@ div.caja {
 .boton,
 button,
 input[type="submit"],
+input[type='reset'],
 input[type="button"] {
     display: block;
     /* display: inline-block; */
@@ -265,6 +266,7 @@ input[type="button"] {
 .boton:hover,
 button:hover,
 input[type="submit"]:hover, 
+input[type='reset'],
 input[type="button"]:hover {
     background-color: var(--back-color);
     color: var(--fcolor-items);
@@ -280,19 +282,6 @@ input[type="submit"].boton-fondo:hover {
     background-color: var(--back-color);
     color: var(--fcolor-items);
     border-color: var(--fcolor-items);
-}
-
-/* ************ BUTTONS DESACTIVADOS ************ */
-/*
-input[type="button"].desactivado {
-    font-style: italic;
-    background-color: rgb(204, 202, 202);
-    color: white;
-    cursor: not-allowed;
-}
-
-input[type="button"].desactivado:hover {
-    color: var(--back-color);
 }
 
 /* ************ ESTILOS PARA LOS TEXT BUTTONS ************ */
@@ -332,10 +321,10 @@ form textarea:focus {
 }
 
 /* ************* ERRORES EN CAMPOS DE TEXTO ****************** */
-form  input[type='text'].error,
-form  input[type='password'].error,
-form  input[type='email'].error,
-form  input[type='date'].error {
+form  input[type='text'].errores,
+form  input[type='password'].errores,
+form  input[type='email'].errores,
+form  input[type='date'].errores {
     border: 2px solid var(--error-color);
     background-color: var(--fcolor-items);
     color: var(--error-color); 
@@ -365,9 +354,10 @@ div.cuadroInstrucciones {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: -10;
+    z-index: 1;
     padding: 0.5rem;
-    background-color: var(--fon-color-alpha);
+    /* background-color: var(--back-color); */
+    background-color: var(--error-color);
     cursor: pointer;
 }
 
@@ -383,41 +373,41 @@ div ol li {
 
 /* **** estilos para las preguntas y respuestas **** */
 
-div.bloque {
-    display: block;
+div.bloque-pregunta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0.3rem;
-    margin-bottom: var(--margen-bajo);
     border: 2px solid transparent;
     -webkit-border-radius: var(--borde-redondo);
     -moz-border-radius: var(--borde-redondo);
     border-radius: var(--borde-redondo);
 }
 
-/* Tener en cuenta que los colores aplicados aqui con CSS seran cambiados 
-    mas adelante en el script de JS al dar clik en los iconos, en el 
-    encabezado del script encontrara las constantes usadas para los colores */
-/* Ejemplo: "js/script.js" => const preguntaFondo = */
-
-div.bloque:hover {
+div.bloque-pregunta:hover {
     background-color: var(--fon-color-alpha);
 }
 
 p.pregunta {
-    max-width: 70%;
+    width: 70%;
 }
 
-p.respuesta {
-    min-width: 6.5rem;
+.respuesta {
+    min-width: 11rem;
+    padding: 0.3rem 0;
 }
 
-div.seleccion-respuesta {
-    color: black;
+div.preg-con-seleccion > p {
     font-style: italic;
-    background-color: var(--cSeleccion-preguntas); 
+}
+
+.respuesta-seleccionada {
+    color: red;
+    /* color: var(--error-color); */
 }
 
 div.preg-sin-seleccion {
-    border-color: var(--error-color);
+    border: 2px solid var(--error-color);
     color: var(--error-color);
 }
 
@@ -449,13 +439,6 @@ div.resul-categorias {
 .cursor {
     cursor: pointer;
 } 
-
-div.preguntas {
-    background-color: aquamarine;
-    position: relative;
-    display: block;
-    z-index: -1;
-}
 
 input.verde:hover
 {

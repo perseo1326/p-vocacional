@@ -16,8 +16,10 @@
 
             $usuarioId = limpiarDatos($_POST['usuarioId']);
             $password = limpiarDatos($_POST['password']);
+
+            // TODO -> ENCRIPTAR CONTRASEÑA
             // encriptar al contraseña del login para luego compararla con la ddbb
-            // $password = hash('sha512', $password);
+            $password = hash('sha512', $password);
 
             //crear conexion ddbb 
             $conexion = conexion($db_config);
@@ -38,7 +40,7 @@
                     if (!(strcmp($passDB['pass'], $password) == 0 )) {
                         // $error .= " -- la contraseña son incorrectos<br />";
                         $error .= "El usuario o la contraseña son incorrectos.<br />";
-                        $regLog(__FILE__, __LINE__, "Contraseña NO valida");
+                        regLog(__FILE__, __LINE__, "Contraseña NO valida");
                     }
                 }
             } 
@@ -51,8 +53,8 @@
             if ($error == "") {
                 $_SESSION['usuarioId'] = $resultados['usuarioId'];
                 $_SESSION['usuarioNombre'] = $resultados['nombre'];
-                // header('Location: ' . RUTA . 'bienvenida-prueba.php');
-                header('Location: ' . 'bienvenida-prueba.php');
+                header('Location: ' . RUTA . 'bienvenida-prueba.php');
+                // header('Location: ' . 'bienvenida-prueba.php');
             }
         } 
 

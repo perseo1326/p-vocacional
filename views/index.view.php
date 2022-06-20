@@ -11,25 +11,25 @@
         $claseError = "ancho";
         $mostrarError = "";
     } else {
-        $claseError = "ancho error";
+        $claseError = "ancho errores";
         $mostrarFormulario = "fondo";
         $mostrarError = "errores";
     }
 ?>
 
-    <div class="imagen-fondo">
+    <div class="imagen-fondo" id="contenido">
         <div id="area" class="contenedor ">
             <h1 class="titulo">Prueba Vocacional</h1>
             <p class="presentacion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis praesentium molestias quidem obcaecati aperiam recusandae, similique nesciunt maiores! Non inventore neque aut veniam corporis eos nostrum autem debitis reiciendis quisquam.</p>
             <div class="caja-pequenna">
-                <input class="ancho" type="button" value="Registrar Nuevo Usuario" onclick="location.href='nuevoUsuario.php'" >
-                <input id="botonLogin" class="ancho" type="button" value="Iniciar Sesion" onclick="javascript:mostrarLogin()">
+                <input id="bNuevoUsuario" class="ancho" type="button" value="Registrar Nuevo Usuario" >
+                <input id="bBotonLogin" class="ancho" type="button" value="Iniciar Sesion" >
                 <div class="<?php echo $mostrarFormulario ;?>" id="iniciarSesion">
-                    <form id="formLogin" class="" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post" onsubmit="javascript:return validarLogin('ancho')">
+                    <form id="formLogin" class="" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post" >
                         <input class="<?php echo $claseError; ?>" id="usuarioId" type="text" name="usuarioId" placeholder="Usuario" autofocus >
                         <input class="<?php echo $claseError; ?>" id="passw" type="password" name="password" placeholder="Contraseña">
                         <p id="verErrorLogin" class="<?php echo $mostrarError; ?>"><?php echo $error; ?></p>
-                        <input class="boton-fondo" type="submit" value="Iniciar Sesion">
+                        <input class="boton-fondo" id="bIniciarSesion" type="submit" value="Iniciar Sesion">
                     </form>
                 </div>
             </div>
@@ -40,5 +40,9 @@
     <?php
         require_once __DIR__ . '/footer.view.php';
     ?>
+
+    <script src="<?php echo RUTA; ?>js/script.js" ></script>
+    <script src="<?php echo RUTA; ?>js/index.js" ></script>
+
 </body>
 </html>
